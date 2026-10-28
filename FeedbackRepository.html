@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Brew Haven | Customer Feedback</title>
+
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        body {
+
+            margin: 0;
+
+            background: #fffaf5;
+
+            font-family: Arial, sans-serif;
+
+            color: #4b3621;
+        }
+
+
+        .navbar {
+
+            background: white;
+
+            box-shadow:
+                0 3px 12px rgba(0,0,0,0.12);
+        }
+
+
+        .navbar-brand {
+
+            color: #4b3621 !important;
+
+            font-weight: bold;
+
+            font-size: 22px;
+        }
+
+
+        .page-container {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 120px 20px 50px;
+        }
+
+
+        .page-title {
+
+            text-align: center;
+
+            margin-bottom: 40px;
+        }
+
+
+        .page-title h1 {
+
+            color: #4b3621;
+
+            font-size: 38px;
+
+            font-weight: 800;
+        }
+
+
+        .page-title p {
+
+            color: #806b5d;
+        }
+
+
+        .feedback-card {
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 8px 30px rgba(0,0,0,0.10);
+        }
+
+
+        .table {
+
+            margin-bottom: 0;
+
+            vertical-align: middle;
+        }
+
+
+        .table thead {
+
+            background: #6f4e37;
+
+            color: white;
+        }
+
+
+        .table thead th {
+
+            padding: 16px;
+
+            border: none;
+
+            white-space: nowrap;
+        }
+
+
+        .table tbody td {
+
+            padding: 16px;
+
+            border-bottom: 1px solid #eee;
+
+            vertical-align: middle;
+        }
+
+
+        .table tbody tr:hover {
+
+            background: #fff8f0;
+        }
+
+
+        .customer-name {
+
+            font-weight: bold;
+
+            color: #4b3621;
+        }
+
+
+        .customer-email {
+
+            color: #806b5d;
+
+            font-size: 14px;
+        }
+
+
+        .stars {
+
+            color: #f5b301;
+
+            font-size: 20px;
+
+            white-space: nowrap;
+        }
+
+
+        .message {
+
+            max-width: 500px;
+
+            color: #5f4a3c;
+
+            line-height: 1.5;
+        }
+
+
+        .empty {
+
+            text-align: center;
+
+            padding: 70px 20px;
+
+            color: #6f4e37;
+        }
+
+
+        .empty-icon {
+
+            font-size: 55px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .dashboard-btn {
+
+            background: #6f4e37;
+
+            color: white;
+
+            padding: 8px 18px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+
+        .dashboard-btn:hover {
+
+            background: #4b3621;
+
+            color: white;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar fixed-top">
+
+    <div class="container">
+
+        <a
+            href="/Dashboard"
+            class="navbar-brand"
+        >
+
+            ☕ Brew Haven Admin
+
+        </a>
+
+
+        <div class="ms-auto">
+
+            <a
+                href="/Dashboard"
+                class="dashboard-btn"
+            >
+
+                Dashboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- PAGE -->
+
+<div class="page-container">
+
+
+    <div class="page-title">
+
+        <h1>
+            💬 Customer Feedback
+        </h1>
+
+        <p>
+            Feedback submitted by our customers
+        </p>
+
+    </div>
+
+
+
+    <!-- FLASH -->
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+
+            {% for category, message in messages %}
+
+                <div
+                    class="alert alert-{{ category }}"
+                >
+
+                    {{ message }}
+
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
+
+
+    <!-- FEEDBACK -->
+<div class="feedback-card">
+
+    {% if feedbacks %}
+
+    <div class="table-responsive">
+
+        <table class="table">
+
+            <thead>
+
+                <tr>
+                    <th>Customer</th>
+                    <th>Email</th>
+                    <th>Rating</th>
+                    <th>Feedback</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for feedback in feedbacks %}
+
+                <tr>
+
+                    <!-- CUSTOMER -->
+
+                    <td>
+
+                        <div class="customer-name">
+                            {{ feedback['name'] }}
+                        </div>
+
+                    </td>
+
+
+                    <!-- EMAIL -->
+
+                    <td>
+
+                        <div class="customer-email">
+                            {{ feedback['email'] }}
+                        </div>
+
+                    </td>
+
+
+                    <!-- RATING -->
+
+                    <td>
+
+                        <div class="stars">
+
+                            {% for i in range(feedback['rating']|int) %}
+
+                                ⭐
+
+                            {% endfor %}
+
+                        </div>
+
+                        <div class="rating-number">
+
+                            {{ feedback['rating'] }}/5
+
+                        </div>
+
+                    </td>
+
+
+                    <!-- MESSAGE -->
+
+                    <td>
+
+                        <div class="feedback-message">
+
+                            {{ feedback['message'] }}
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    {% else %}
+
+    <div class="empty">
+
+        <div class="empty-icon">
+            ☕
+        </div>
+
+        <h3>
+            No Customer Feedback
+        </h3>
+
+        <p>
+            No feedback records were found.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+
+</div>
+
+
+</body>
+
+</html>

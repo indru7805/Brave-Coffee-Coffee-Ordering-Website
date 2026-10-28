@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+    .navbar{
+        background-color: #A9B3C0 !important;   
+    }
+    .fillmid{
+        background: linear-gradient(to right, #2d2320, #5f4a41, #826c62);
+        height: 290px;
+        margin: 0;
+    }
+    .contact-icon{
+    font-size:40px;
+    color:#d9534f;
+}
+
+h4{
+    font-size:28px;
+    margin-top:15px;
+}
+
+p{
+    color:#666;
+    line-height:1.8;
+}
+.midcontent{
+    height: 380px;
+    width: 380px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.midcontent:hover{
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+.contact-form-box{
+    background:#fff;
+    border-radius:8px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+.contact-form-box h3{
+    font-weight:600;
+    color:#333;
+}
+
+.contact-form-box label{
+    font-size:14px;
+    font-weight:500;
+    color:#555;
+}
+
+.contact-form-box .form-control,
+.contact-form-box .form-select{
+    height:45px;
+    border:1px solid #ddd;
+    border-radius:4px;
+    box-shadow:none;
+}
+
+.contact-form-box textarea.form-control{
+    height:auto;
+    resize:none;
+}
+
+.contact-form-box .form-control:focus,
+.contact-form-box .form-select:focus{
+    border-color:#8b6b61;
+    box-shadow:0 0 5px rgba(139,107,97,0.3);
+}
+
+.send-btn{
+    background:#6b5550;
+    color:white;
+    font-weight:600;
+    padding:12px;
+    border:none;
+    transition:0.3s;
+}
+
+.send-btn:hover{
+    background:#56443f;
+    color:white;
+}
+.opening-table{
+    background:#fff;
+    border:1px solid #ddd;
+    border-collapse: collapse;
+}
+
+.opening-table td{
+    padding:14px 18px;
+    font-size:16px;
+    transition:0.3s ease;
+}
+
+.opening-table tbody tr{
+    cursor:pointer;
+}
+
+.opening-table tbody tr:hover{
+    background:#d9e8ff;
+    font-weight:600;
+}
+
+.opening-table tbody tr:hover td{
+    color:#000;
+    background-color: cornflowerblue;
+}
+h2{
+    font-size:42px;
+    font-weight:400;
+    color:#222;
+}
+.maploc
+{
+    background-color: rgb(239, 237, 234);
+    height: 840px;
+}
+.imap{
+    margin-left: 90px;
+}
+.reserve{
+    background-color: whitesmoke;
+    height: 220px;
+}
+.footer{
+    background-color:#22263b;
+    color:white;
+}
+
+.footer h5,
+.footer h6{
+    color:white;
+}
+
+.footer p{
+    color:#d1d1d1;
+    margin-bottom:6px;
+    font-size:14px;
+}
+
+.footer-link{
+    color:#d1d1d1;
+    text-decoration:none;
+    display:block;
+    margin-bottom:6px;
+    transition:0.3s;
+}
+
+.footer-link:hover{
+    color:#ffffff;
+    padding-left:5px;
+}
+
+.footer hr{
+    border-color:rgba(255,255,255,0.2);
+}
+
+.footer .text-center{
+    font-size:14px;
+    color:#d1d1d1;
+}
+.btn-close{
+    color: white;
+}
+.modal-content{
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.modal-header{
+    padding:15px 20px;
+}
+
+.modal-title{
+    font-weight:500;
+}
+
+.form-label{
+    font-weight:500;
+    margin-bottom:6px;
+}
+
+.form-control,
+.form-select{
+    height:45px;
+    border-radius:6px;
+}
+
+textarea.form-control{
+    height:auto;
+    resize:none;
+}
+
+.modal-footer{
+    border-top:none;
+}
+
+.btn-dark{
+    background:#343a40;
+    border:none;
+}
+
+.btn-dark:hover{
+    background:#212529;
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a href="#" class="navbar-brand fw-bolder">
+            <img src="../static/img/images (1).jpeg" alt="Cupimage" height="50" width="50" style="margin-left: 100px;">
+            &nbsp;&nbsp;Brew Haven
+        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#mymenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mymenu">
+            <ul class="navbar-nav ms-auto" style="margin-right: 100px;">
+                <li class="nav-item active"><a href="/" class="nav-link fw-bold">Home</a></li>
+                <li class="nav-item"><a href="/Menu" class="nav-link fw-bold">Menu</a></li>
+                <li class="nav-item"><a href="/About" class="nav-link fw-bold">About</a></li>
+                <li class="nav-item"><a href="/Contact" class="nav-link fw-bold">Contact</a></li>
+                <li class="nav-item"><a href="/Registration" class="nav-link fw-bold">Registration</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid p-0">
+        <div class="fillmid">
+            <div class="start1">
+                <br><br><br><br><br><p class="text-light text-center fw-bold" style="font-size: 50px;font-family:Arial, Helvetica, sans-serif">Contact Us</p>
+                <p class="text-light text-center" style="font-family: Arial, Helvetica, sans-serif;line-height:2px">We'd love to here from you!</p>
+            </div>
+        </div>
+    </div>
+
+<div class="container py-5">
+
+    <div class="row text-center">
+
+        <!-- Visit Us -->
+        <div class="col-lg-4 col-md-4 mb-4 midcontent" style="margin-left: 50px;">
+            <br><br><br>
+            <i class="bi bi-geo-alt-fill contact-icon"></i>
+
+            <h4 class="mt-3">Visit Us</h4>
+
+            <p>
+                123 Coffee Street <br>
+                Cafe City, CC 12345 <br>
+                United States
+            </p>
+
+        </div>
+
+        <!-- Call Us -->
+        <div class="col-lg-4 col-md-4 mb-4 midcontent"style="margin-left:30px">
+            <br><br><br>
+            <i class="bi bi-telephone-fill contact-icon"></i>
+
+            <h4 class="mt-3">Call Us</h4>
+
+            <p>
+                Phone: (555) 123-4567 <br>
+                Mobile: (555) 987-6543 <br>
+                Mon–Sun: 7 AM - 9 PM
+            </p>
+
+        </div>
+
+        <!-- Email -->
+        <div class="col-lg-4 col-md-4 mb-4 midcontent"style="margin-left:30px">
+            <br><br><br>
+            <i class="bi bi-envelope contact-icon"></i>
+
+            <h4 class="mt-3">Email Us</h4>
+
+            <p>
+                hello@brewhaven.com <br>
+                support@brewhaven.com <br>
+                We reply within 24 hours
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Contact Form -->
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <div class="contact-form-box p-5">
+                <h3 class="text-center mb-4">Send Us a Message</h3>
+
+                <form>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Your Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" placeholder="John Doe" required>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Email Address <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" placeholder="(555) 123-4567">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Subject<span class="text-danger">*</span></label>
+                            <select class="form-select">
+                                <option selected>Choose...</option>
+                                <option>General Inquiry</option>
+                                <option>Order Support</option>
+                                <option>Feedback</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Your Message <span class="text-danger">*</span></label>
+                        <textarea class="form-control" rows="6" placeholder="Tell us how we can help you..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn send-btn w-100">
+                        Send Message
+                    </button>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Opening Hours -->
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+
+            <h2 class="text-center mb-5">Opening Hours</h2>
+
+            <table class="table table-bordered opening-table">
+                <tbody>
+                    <tr>
+                        <td>Monday - Friday</td>
+                        <td class="text-end">7:00 AM - 9:00 PM</td>
+                    </tr>
+
+                    <tr>
+                        <td>Saturday</td>
+                        <td class="text-end">8:00 AM - 10:00 PM</td>
+                    </tr>
+
+                    <tr>
+                        <td>Sunday</td>
+                        <td class="text-end">8:00 AM - 8:00 PM</td>
+                    </tr>
+
+                    <tr>
+                        <td>Happy Hour</td>
+                        <td class="text-end">3:00 PM - 5:00 PM (Daily)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<div class="maploc container-fluid"><br><br>
+    <div><p class="text-center text-black" style="font-size: 30px;font-weight:500;font-family:Arial, Helvetica, sans-serif">Find Us Here</p></div><br><br><br>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968346.294353607!2d72.55006061946177!3d13.758468487381794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc101453a9ca067%3A0xbc1b819c9be5c8b2!2sRedeye%20Cafe!5e0!3m2!1sen!2sin!4v1785909064987!5m2!1sen!2sin" width="1300" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" class="imap"></iframe>
+</div>
+
+<div class="reserve"><br><br>
+    <div><p class="text-center text-black" style="font-size: 30px;font-weight:500;font-family:Arial, Helvetica, sans-serif">Want to Reserve a Table?</p></div>
+    <div class="text-center"><button type="submit" class="text-center rounded-3 text-light p-2" style="background-color: #9c3c39;border:none;" data-bs-toggle="modal" data-bs-target="#reservation">Make a Reservation</button></div>
+    <!-- Reservation Modal -->
+<div class="modal fade" id="reservation" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+
+            <!-- Header -->
+            <div class="modal-header text-white bg-dark">
+                <h4 class="modal-title">Table Reservation</h4>
+                <button type="button" class="btn-close btn-close-white"
+                        data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+
+                <form>
+
+                    <!-- Name -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Name <span class="text-danger">*</span>
+                        </label>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Enter your name"
+                               required>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Phone Number <span class="text-danger">*</span>
+                        </label>
+                        <input type="tel"
+                               class="form-control"
+                               placeholder="Enter phone number"
+                               required>
+                    </div>
+
+                    <!-- Date -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Date <span class="text-danger">*</span>
+                        </label>
+                        <input type="date"
+                               class="form-control"
+                               required>
+                    </div>
+
+                    <!-- Time -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Time <span class="text-danger">*</span>
+                        </label>
+                        <input type="time"
+                               class="form-control"
+                               required>
+                    </div>
+
+                    <!-- Guests -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Number of Guests <span class="text-danger">*</span>
+                        </label>
+
+                        <select class="form-select" required>
+                            <option selected disabled>Choose...</option>
+                            <option>1 Person</option>
+                            <option>2 People</option>
+                            <option>3 People</option>
+                            <option>4 People</option>
+                            <option>5 People</option>
+                            <option>6+ People</option>
+                        </select>
+                    </div>
+
+                    <!-- Requests -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Special Requests
+                        </label>
+
+                        <textarea class="form-control"
+                                  rows="4"
+                                  placeholder="Any special requests?"></textarea>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                    Cancel
+                </button>
+
+                <button type="submit"
+                        class="btn btn-dark">
+                    Confirm Reservation
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+<footer class="footer ">
+    <div class="container py-4">
+        <div class="row">
+
+            <div class="col-md-4">
+                <h5 class="fw-bold">☕ Brew Haven</h5>
+                <p>Your favorite coffee destination</p>
+            </div>
+
+            <div class="col-md-4">
+                <h6 class="fw-bold">Quick Links</h6>
+                <ul class="list-unstyled">
+                    <li><a href="/Menu" class="footer-link">Menu</a></li>
+                    <li><a href="/About" class="footer-link">About Us</a></li>
+                    <li><a href="/Contact" class="footer-link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h6 class="fw-bold">Connect With Us</h6>
+
+                <p class="mb-1">📍 123 Coffee Street, Cafe City</p>
+                <p class="mb-1">📞 (555) 123-4567</p>
+                <p>✉️ hello@brewhaven.com</p>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="text-center">
+            © 2024 Brew Haven. All rights reserved.
+        </div>
+    </div>
+</footer>
+</body>
+</html>

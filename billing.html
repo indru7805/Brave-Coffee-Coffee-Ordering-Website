@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Brew Haven | Billing</title>
+
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            min-height: 100vh;
+
+            background: #f8f4ef;
+
+            font-family: Arial, sans-serif;
+
+            color: #3b2417;
+
+            padding-top: 80px;
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background: white !important;
+
+            box-shadow:
+                0 3px 15px rgba(0,0,0,0.08);
+        }
+
+
+        .navbar-brand {
+            color: #5b321d !important;
+
+            font-size: 22px;
+
+            font-weight: bold;
+        }
+
+
+        /* ================= MAIN ================= */
+
+        .billing-container {
+
+            max-width: 1000px;
+
+            margin: 40px auto;
+
+            padding: 20px;
+        }
+
+
+        .billing-title {
+
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+
+        .billing-title h1 {
+
+            color: #5b321d;
+
+            font-size: 38px;
+
+            font-weight: 800;
+        }
+
+
+        .billing-title p {
+
+            color: #806b5d;
+        }
+
+
+        /* ================= BILL CARD ================= */
+
+        .bill-card {
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 10px 35px rgba(60,35,20,0.12);
+        }
+
+
+        .bill-heading {
+
+            color: #5b321d;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            margin-bottom: 20px;
+        }
+
+
+        .bill-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 13px 0;
+
+            border-bottom: 1px solid #eee;
+        }
+
+
+        .bill-row:last-child {
+
+            border-bottom: none;
+        }
+
+
+        .bill-label {
+
+            color: #806b5d;
+
+            font-weight: 600;
+        }
+
+
+        .bill-value {
+
+            color: #4a2919;
+
+            font-weight: bold;
+        }
+
+
+        .grand-total {
+
+            background: #f8f0e8;
+
+            padding: 18px;
+
+            border-radius: 12px;
+
+            margin-top: 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+
+        .grand-total span:first-child {
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            color: #5b321d;
+        }
+
+
+        .grand-total span:last-child {
+
+            font-size: 28px;
+
+            font-weight: 800;
+
+            color: #b36b35;
+        }
+
+
+        /* ================= PAYMENT ================= */
+
+        .payment-title {
+
+            margin-top: 35px;
+
+            margin-bottom: 20px;
+
+            color: #5b321d;
+
+            font-size: 22px;
+
+            font-weight: bold;
+        }
+
+
+        .payment-options {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .payment-card {
+
+            position: relative;
+        }
+
+
+        .payment-card input {
+
+            position: absolute;
+
+            opacity: 0;
+        }
+
+
+        .payment-label {
+
+            display: block;
+
+            padding: 25px;
+
+            border: 2px solid #e2d3c5;
+
+            border-radius: 16px;
+
+            cursor: pointer;
+
+            text-align: center;
+
+            transition: 0.3s;
+
+            background: white;
+        }
+
+
+        .payment-label:hover {
+
+            border-color: #b36b35;
+
+            transform: translateY(-3px);
+        }
+
+
+        .payment-card input:checked + .payment-label {
+
+            border-color: #6f4e37;
+
+            background: #f8f0e8;
+
+            box-shadow:
+                0 5px 18px rgba(74,41,25,0.12);
+        }
+
+
+        .payment-icon {
+
+            font-size: 42px;
+
+            display: block;
+
+            margin-bottom: 10px;
+        }
+
+
+        .payment-name {
+
+            font-size: 19px;
+
+            font-weight: bold;
+
+            color: #4b3621;
+        }
+
+
+        .payment-description {
+
+            font-size: 14px;
+
+            color: #806b5d;
+
+            margin-top: 5px;
+        }
+
+
+        /* ================= UPI ================= */
+
+        .upi-box {
+
+            margin-top: 20px;
+
+            padding: 20px;
+
+            background: #fff8f0;
+
+            border-radius: 15px;
+
+            border: 1px solid #ead8c0;
+        }
+
+
+        .upi-box p {
+
+            margin: 0 0 10px;
+
+            color: #5b321d;
+
+            font-weight: bold;
+        }
+
+
+        .upi-id {
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            color: #6f4e37;
+        }
+
+
+        /* ================= BUTTON ================= */
+
+        .confirm-btn {
+
+            width: 100%;
+
+            margin-top: 30px;
+
+            border: none;
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+            background: #5b321d;
+
+            color: white;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .confirm-btn:hover {
+
+            background: #b36b35;
+
+            transform: translateY(-2px);
+        }
+
+
+        .back-btn {
+
+            display: block;
+
+            text-align: center;
+
+            margin-top: 18px;
+
+            text-decoration: none;
+
+            color: #5b321d;
+
+            font-weight: bold;
+        }
+
+
+        .back-btn:hover {
+
+            color: #b36b35;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 650px) {
+
+            .payment-options {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .billing-title h1 {
+
+                font-size: 30px;
+            }
+
+
+            .bill-card {
+
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg fixed-top">
+
+    <div class="container">
+
+        <a
+            href="/Customerdashboard"
+            class="navbar-brand"
+        >
+
+            ☕ Brew Haven
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= BILLING ================= -->
+
+<div class="billing-container">
+
+
+    <div class="billing-title">
+
+        <h1>
+            🧾 Billing & Payment
+        </h1>
+
+        <p>
+            Review your order and select a payment method
+        </p>
+
+    </div>
+
+
+
+    <div class="bill-card">
+
+
+        <div class="bill-heading">
+
+            Order Summary
+
+        </div>
+
+
+        <!-- NAME -->
+
+        <div class="bill-row">
+
+            <span class="bill-label">
+                Coffee
+            </span>
+
+            <span class="bill-value">
+                {{ name }}
+            </span>
+
+        </div>
+
+
+        <!-- PRICE -->
+
+        <div class="bill-row">
+
+            <span class="bill-label">
+                Price
+            </span>
+
+            <span class="bill-value">
+                ${{ price }}
+            </span>
+
+        </div>
+
+
+        <!-- QUANTITY -->
+
+        <div class="bill-row">
+
+            <span class="bill-label">
+                Quantity
+            </span>
+
+            <span class="bill-value">
+                {{ quantity }}
+            </span>
+
+        </div>
+
+
+        <!-- TOTAL -->
+
+        <div class="grand-total">
+
+            <span>
+                Total Amount
+            </span>
+
+            <span>
+                ${{ total }}
+            </span>
+
+        </div>
+
+
+
+        <!-- PAYMENT -->
+
+        <div class="payment-title">
+
+            Select Payment Method
+
+        </div>
+
+
+        <form
+            action="/confirm-order"
+            method="POST"
+        >
+
+
+            <!-- Send order data -->
+
+            <input
+                type="hidden"
+                name="name"
+                value="{{ name }}"
+            >
+
+            <input
+                type="hidden"
+                name="price"
+                value="{{ price }}"
+            >
+
+            <input
+                type="hidden"
+                name="quantity"
+                value="{{ quantity }}"
+            >
+
+            <input
+                type="hidden"
+                name="total"
+                value="{{ total }}"
+            >
+
+
+            <!-- PAYMENT OPTIONS -->
+
+            <div class="payment-options">
+
+
+                <!-- COD -->
+
+                <div class="payment-card">
+
+                    <input
+                        type="radio"
+                        name="payment_method"
+                        value="Cash on Delivery"
+                        id="cod"
+                        required
+                    >
+
+                    <label
+                        for="cod"
+                        class="payment-label"
+                    >
+
+                        <span class="payment-icon">
+                            💵
+                        </span>
+
+                        <span class="payment-name">
+                            Cash on Delivery
+                        </span>
+
+                        <div class="payment-description">
+                            Pay when your order arrives
+                        </div>
+
+                    </label>
+
+                </div>
+
+
+                <!-- UPI -->
+
+                <div class="payment-card">
+
+                    <input
+                        type="radio"
+                        name="payment_method"
+                        value="UPI"
+                        id="upi"
+                    >
+
+                    <label
+                        for="upi"
+                        class="payment-label"
+                    >
+
+                        <span class="payment-icon">
+                            📱
+                        </span>
+
+                        <span class="payment-name">
+                            UPI
+                        </span>
+
+                        <div class="payment-description">
+                            Pay using UPI
+                        </div>
+
+                    </label>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- UPI INFORMATION -->
+
+            <div class="upi-box">
+
+                <p>
+                    UPI Payment
+                </p>
+
+                <div class="upi-id">
+                    brewHaven@upi
+                </div>
+
+                <small>
+                    Select UPI above and complete the payment
+                    using your UPI application.
+                </small>
+
+            </div>
+
+
+            <!-- CONFIRM -->
+
+            <button
+                type="submit"
+                class="confirm-btn"
+            >
+
+                ✓ Confirm Order
+
+            </button>
+
+
+        </form>
+
+
+        <a
+            href="/Customerdashboard"
+            class="back-btn"
+        >
+
+            ← Back to Menu
+
+        </a>
+
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

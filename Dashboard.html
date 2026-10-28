@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <style>
+
+        body {
+            background: #f5eee7;
+        }
+
+        .menu-container {
+            padding: 50px 15px;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .menu-header {
+            background: linear-gradient(
+                135deg,
+                #4b3621,
+                #6f4e37
+            );
+
+            color: white;
+            padding: 30px;
+        }
+
+        .menu-header h2 {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .menu-header p {
+            margin-top: 8px;
+            color: #ead8c0;
+        }
+
+        .form-section {
+            padding: 30px;
+            background: #fffaf5;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #4b3621;
+        }
+
+        .form-control,
+        .form-select {
+            height: 48px;
+            border-radius: 10px;
+            border: 1px solid #d6c2ad;
+        }
+
+        .btn-save {
+            height: 48px;
+            padding: 0 30px;
+            border: none;
+            border-radius: 10px;
+            background: #6f4e37;
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn-save:hover {
+            background: #4b3621;
+        }
+
+        .table-section {
+            padding: 30px;
+        }
+
+        .section-title {
+            color: #4b3621;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .table-wrapper {
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #e1d3c5;
+        }
+
+        .table {
+            margin-bottom: 0;
+            vertical-align: middle;
+        }
+
+        .table thead {
+            background: #6f4e37;
+            color: white;
+        }
+
+        .table thead th {
+            padding: 15px;
+            border: none;
+        }
+
+        .table tbody td {
+            padding: 15px;
+        }
+
+        .table tbody tr:hover {
+            background: #fff8f0;
+        }
+
+        .menu-image {
+            width: 65px;
+            height: 65px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #d2b48c;
+        }
+
+        .price {
+            color: #6f4e37;
+            font-weight: bold;
+        }
+
+        .category-badge {
+            background: #ead8c0;
+            color: #4b3621;
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .btn-edit {
+            background: #ead8c0;
+            color: #4b3621;
+            border: none;
+            border-radius: 8px;
+            padding: 7px 14px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .btn-edit:hover {
+            background: #d9bd9b;
+            color: #4b3621;
+        }
+
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 7px 14px;
+            font-weight: 600;
+        }
+
+        .btn-delete:hover {
+            background: #bb2d3b;
+        }
+
+        .btn-cancel {
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 25px;
+            text-decoration: none;
+            margin-right: 8px;
+        }
+
+        .btn-cancel:hover {
+            background: #5c636a;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+
+            .menu-container {
+                padding: 25px 10px;
+            }
+
+            .form-section,
+            .table-section {
+                padding: 20px;
+            }
+
+            .btn-save {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
+    <div class="container-fluid">
+
+        <a href="#"
+           class="navbar-brand fw-bolder">
+
+            <img
+                src="{{ url_for('static', filename='img/images (1).jpeg') }}"
+                alt="Cupimage"
+                height="50"
+                width="50">
+
+            &nbsp;&nbsp;
+
+            Brew Haven
+
+        </a>
+
+
+        <button
+            type="button"
+            class="navbar-toggler"
+            data-bs-toggle="collapse"
+            data-bs-target="#mymenu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div
+            class="collapse navbar-collapse"
+            id="mymenu">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+
+                    <a
+                        href="/Dashboard"
+                        class="nav-link fw-bold">
+
+                        Menu
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        href="/vieworder"
+                        class="nav-link fw-bold">
+
+                        View Order
+
+                    </a>
+
+                </li>
+
+                                <li class="nav-item">
+
+                    <a
+                        href="/FeedbackRepository"
+                        class="nav-link fw-bold">
+
+                        Customer feedback
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        href="/Logout"
+                        class="nav-link fw-bold">
+
+                        LogOut
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<br>
+<br>
+<br>
+<br>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<div class="container menu-container">
+
+    <div class="menu-card">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <div class="menu-header">
+
+            <h2>
+                Menu Management
+            </h2>
+
+            <p>
+                Add delicious items to your cafe menu.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             FORM
+        ================================================== -->
+
+        <div class="form-section">
+
+            {% if edit_menu %}
+
+                <h4 class="section-title">
+                    Edit Menu Item
+                </h4>
+
+            {% else %}
+
+                <h4 class="section-title">
+                    Add New Menu Item
+                </h4>
+
+            {% endif %}
+
+
+            <form
+                method="POST"
+                action="/Dashboard"
+                enctype="multipart/form-data">
+
+
+                <!--
+                    If this has a value:
+                    UPDATE
+
+                    If empty:
+                    INSERT
+                -->
+
+                <input
+                    type="hidden"
+                    name="menu_id"
+                    value="{% if edit_menu %}{{ edit_menu.id }}{% endif %}">
+
+
+                <div class="row g-4">
+
+
+                    <!-- CATEGORY -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Category
+                        </label>
+
+                        <select
+                            name="category"
+                            class="form-select"
+                            required>
+
+                            <option value="">
+                                Select Category
+                            </option>
+
+
+                            <option
+                                value="Coffee"
+                                {% if edit_menu and edit_menu.category == "Coffee" %}
+                                    selected
+                                {% endif %}>
+
+                                Coffee
+
+                            </option>
+
+
+                            <option
+                                value="Tea"
+                                {% if edit_menu and edit_menu.category == "Tea" %}
+                                    selected
+                                {% endif %}>
+
+                                Tea
+
+                            </option>
+
+
+                            <option
+                                value="Dessert"
+                                {% if edit_menu and edit_menu.category == "Dessert" %}
+                                    selected
+                                {% endif %}>
+
+                                Dessert
+
+                            </option>
+
+
+                            <option
+                                value="Snacks"
+                                {% if edit_menu and edit_menu.category == "Snacks" %}
+                                    selected
+                                {% endif %}>
+
+                                Snacks
+
+                            </option>
+
+
+                            <option
+                                value="Beverages"
+                                {% if edit_menu and edit_menu.category == "Beverages" %}
+                                    selected
+                                {% endif %}>
+
+                                Beverages
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- NAME -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Menu Name
+                        </label>
+
+                        <input
+                            type="text"
+                            name="name"
+                            class="form-control"
+                            placeholder="Enter menu item name"
+                            value="{% if edit_menu %}{{ edit_menu.name }}{% endif %}"
+                            required>
+
+                    </div>
+
+
+                    <!-- PRICE -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Price
+                        </label>
+
+                        <input
+                            type="number"
+                            name="price"
+                            class="form-control"
+                            placeholder="Enter price"
+                            min="0"
+                            step="0.01"
+                            value="{% if edit_menu %}{{ edit_menu.price }}{% endif %}"
+                            required>
+
+                    </div>
+
+
+                    <!-- IMAGE -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Image
+                        </label>
+
+                        <input
+                            type="file"
+                            name="image"
+                            class="form-control"
+                            accept="image/*"
+                            {% if not edit_menu %}
+                                required
+                            {% endif %}>
+
+                        {% if edit_menu and edit_menu.image %}
+
+                            <small class="text-muted">
+
+                                Current image:
+
+                                {{ edit_menu.image }}
+
+                                <br>
+
+                                Select a new image only if you want
+                                to replace the current image.
+
+                            </small>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- BUTTONS -->
+
+                    <div class="col-12 text-end">
+
+
+                        {% if edit_menu %}
+
+                            <a
+                                href="/Dashboard"
+                                class="btn-cancel">
+
+                                Cancel
+
+                            </a>
+
+
+                            <button
+                                type="submit"
+                                class="btn-save">
+
+                                Update Menu
+
+                            </button>
+
+                        {% else %}
+
+                            <button
+                                type="submit"
+                                class="btn-save">
+
+                                Save Menu
+
+                            </button>
+
+                        {% endif %}
+
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- =================================================
+             MENU TABLE
+        ================================================== -->
+
+        <div class="table-section">
+
+            <h4 class="section-title">
+                All Menu Items
+            </h4>
+
+
+            <div class="table-wrapper table-responsive">
+
+                <table class="table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Image</th>
+
+                            <th>Category</th>
+
+                            <th>Menu Name</th>
+
+                            <th>Price</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% if menus %}
+
+                            {% for menu in menus %}
+
+                            <tr>
+
+
+                                <!-- ID -->
+
+                                <td>
+                                    {{ menu.id }}
+                                </td>
+
+
+                                <!-- IMAGE -->
+
+                                <td>
+
+                                    {% if menu.image %}
+
+                                        <img
+                                            src="{{ url_for('static', filename=menu.image) }}"
+                                            alt="{{ menu.name }}"
+                                            class="menu-image">
+
+                                    {% else %}
+
+                                        No image
+
+                                    {% endif %}
+
+                                </td>
+
+
+                                <!-- CATEGORY -->
+
+                                <td>
+
+                                    <span class="category-badge">
+
+                                        {{ menu.category }}
+
+                                    </span>
+
+                                </td>
+
+
+                                <!-- NAME -->
+
+                                <td>
+
+                                    {{ menu.name }}
+
+                                </td>
+
+
+                                <!-- PRICE -->
+
+                                <td class="price">
+
+                                    ${{ "%.2f"|format(menu.price|float) }}
+
+                                </td>
+
+
+                                <!-- ACTIONS -->
+
+                                <td>
+
+
+                                    <!-- EDIT -->
+
+                                    <a
+                                        href="/Dashboard?edit={{ menu.id }}"
+                                        class="btn-edit me-2">
+
+                                        Edit
+
+                                    </a>
+
+
+                                    <!-- DELETE -->
+
+                                    <form
+                                        method="POST"
+                                        action="/delete_menu/{{ menu.id }}"
+                                        class="d-inline">
+
+
+                                        <button
+                                            type="submit"
+                                            class="btn-delete">
+
+                                            Delete
+
+                                        </button>
+
+
+                                    </form>
+
+
+                                </td>
+
+
+                            </tr>
+
+                            {% endfor %}
+
+
+                        {% else %}
+
+                            <tr>
+
+                                <td
+                                    colspan="6"
+                                    class="text-center p-4">
+
+                                    No menu items found.
+
+                                </td>
+
+                            </tr>
+
+                        {% endif %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

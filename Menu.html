@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <style>
+        .content{
+            background: linear-gradient(to right, #2d2320, #5f4a41, #826c62);
+            height: 250px;
+        }
+        .mid{
+            background-color: whitesmoke;
+            height: 600px;
+            
+        }
+        .category-menu{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin: 0px;
+        }
+
+    .category-item{
+        text-decoration: none;
+        color: #555;
+        padding: 10px 22px;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    .category-item:hover{
+        background-color: #8B5E3C;
+        color: white;
+        transform: translateY(-3px);
+    }
+    .menu-card{
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.menu-card:hover{
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+.menu-card h5{
+    margin: 0;
+    font-weight: bold;
+}
+
+.menu-card p{
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.price{
+    color: #6B5549;
+    font-weight: bold;
+}
+.offer{
+        background: linear-gradient(to right, #2d2320, #5f4a41, #826c62);
+        height: 250px;
+}
+.footer{
+    background-color:#22263b;
+    color:white;
+}
+
+.footer h5,
+.footer h6{
+    color:white;
+}
+
+.footer p{
+    color:#d1d1d1;
+    margin-bottom:6px;
+    font-size:14px;
+}
+
+.footer-link{
+    color:#d1d1d1;
+    text-decoration:none;
+    display:block;
+    margin-bottom:6px;
+    transition:0.3s;
+}
+
+.footer-link:hover{
+    color:#ffffff;
+    padding-left:5px;
+}
+
+.footer hr{
+    border-color:rgba(255,255,255,0.2);
+}
+
+.footer .text-center{
+    font-size:14px;
+    color:#d1d1d1;
+}
+.navbar{
+    background-color: #A9B3C0 !important;
+}
+    </style>
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a href="#" class="navbar-brand fw-bolder">
+            <img src="../static/img/images (1).jpeg" alt="Cupimage" height="50" width="50" style="margin-left: 100px;">
+            &nbsp;&nbsp;Brew Haven
+        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#mymenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mymenu">
+            <ul class="navbar-nav ms-auto" style="margin-right: 100px;">
+                <li class="nav-item active"><a href="/" class="nav-link fw-bold">Home</a></li>
+                <li class="nav-item"><a href="/Menu" class="nav-link fw-bold">Menu</a></li>
+                <li class="nav-item"><a href="/About" class="nav-link fw-bold">About</a></li>
+                <li class="nav-item"><a href="/Contact" class="nav-link fw-bold">Contact</a></li>
+                <li class="nav-item"><a href="/Registration" class="nav-link fw-bold">Registration</a></li>
+            </ul>
+        </div>
+    </nav>
+    <br><br><br>
+    <div class="container-fluid content"><br><br><br><br>
+        <h2 class="text-light text-center" style="font-size: 50px;">Our Menu</h2>
+        <p class="text-light text-center" style="font-size:18px">Discover our delicious selection of drinks and treats</p>
+    </div>
+
+    <div class="container-fluid mid">
+    <div class="category-menu">
+        <a href="#" class="category-item">Coffee</a>
+        <a href="#" class="category-item">Beverages</a>
+        <a href="#" class="category-item">Food</a>
+        <a href="#" class="category-item">Desserts</a>
+    </div>
+    <div class="container py-5">
+    <div class="row g-4">
+
+        <div class="col-md-6">
+            <div class="menu-card">
+                <div>
+                    <h5>Espresso</h5>
+                    <p>Classic Italian coffee shot</p>
+                </div>
+                <h5 class="price">$3.50</h5>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="menu-card">
+                <div>
+                    <h5>Cappuccino</h5>
+                    <p>Espresso with steamed milk foam</p>
+                </div>
+                <h5 class="price">$4.50</h5>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="menu-card">
+                <div>
+                    <h5>Latte</h5>
+                    <p>Smooth espresso with steamed milk</p>
+                </div>
+                <h5 class="price">$4.75</h5>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="menu-card">
+                <div>
+                    <h5>Mocha</h5>
+                    <p>Chocolate-flavored coffee delight</p>
+                </div>
+                <h5 class="price">$5.50</h5>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="menu-card">
+                <div>
+                    <h5>Americano</h5>
+                    <p>Espresso diluted with hot water</p>
+                </div>
+                <h5 class="price">$3.75</h5>
+            </div>
+        </div>
+
+    
+        <div class="col-md-6">
+            <div class="menu-card">
+                <div>
+                    <h5>Macchiato</h5>
+                    <p>Espresso with a dollop of foam</p>
+                </div>
+                <h5 class="price">$4.25</h5>
+            </div>
+        </div>
+
+    </div>
+</div>  
+    </div>
+
+    <div class="offer">
+        <br><br><p class="text-light text-center fw-bold" style="font-size:30px;font-family:Arial, Helvetica, sans-serif"><img src="../static/img/images (1).jpeg" width="30" height="30"> Special Combo Offer!</p>
+        <p class="text-light text-center" style="font-size: 20px;font-family:Arial, Helvetica, sans-serif">Get any coffee + pastry for just $7.00</p>
+        <p class="text-light text-center"style="font-family:Arial, Helvetica, sans-serif">Available Monday to Friday, 7 AM - 10 AM</p>
+    </div>
+    
+    <footer class="footer">
+    <div class="container py-4">
+        <div class="row">
+
+            <div class="col-md-4">
+                <h5 class="fw-bold">☕ Brew Haven</h5>
+                <p>Your favorite coffee destination</p>
+            </div>
+
+            <div class="col-md-4">
+                <h6 class="fw-bold">Quick Links</h6>
+                <ul class="list-unstyled">
+                    <li><a href="/Menu" class="footer-link">Menu</a></li>
+                    <li><a href="/About" class="footer-link">About Us</a></li>
+                    <li><a href="/Contact" class="footer-link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h6 class="fw-bold">Connect With Us</h6>
+
+                <p class="mb-1">📍 123 Coffee Street, Cafe City</p>
+                <p class="mb-1">📞 (555) 123-4567</p>
+                <p>✉️ hello@brewhaven.com</p>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="text-center">
+            © 2024 Brew Haven. All rights reserved.
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Brew Haven | Customer Orders</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <style>
+        body {
+            background: #f5eee7;
+            font-family: Arial, sans-serif;
+            color: #3b2417;
+            padding-top: 80px;
+        }
+
+        .navbar {
+            background: white !important;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #5b321d !important;
+            font-weight: bold;
+        }
+
+        .orders-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .orders-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 35px rgba(60,35,20,0.15);
+        }
+
+        .orders-title {
+            text-align: center;
+            color: #5b321d;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .table thead {
+            background: #5b321d;
+            color: white;
+        }
+
+        .table th,
+        .table td {
+            padding: 14px;
+            vertical-align: middle;
+        }
+
+        .table tbody tr:hover {
+            background: #fff8f0;
+        }
+
+        .total {
+            color: #b36b35;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: #5b321d;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background: #b36b35;
+            color: white;
+        }
+
+        .no-orders {
+            text-align: center;
+            padding: 40px;
+            color: #806b5d;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+
+    <div class="container-fluid px-4">
+
+        <a href="/Dashboard" class="navbar-brand">
+            ☕ Brew Haven
+        </a>
+
+        <div class="ms-auto">
+
+            <a href="/Dashboard" class="nav-link d-inline-block me-3">
+                Menu
+            </a>
+
+            <a href="/vieworder" class="nav-link d-inline-block ms-3">
+                View Order
+            </a>
+
+            <a href="/FeedbackRepository" class="nav-link d-inline-block ms-3">
+                Customer Feedback
+            </a>
+
+            <a href="/Logout" class="nav-link d-inline-block ms-3">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<div class="orders-container">
+
+    <div class="orders-card">
+
+        <h1 class="orders-title">
+            📦 All Customer Orders
+        </h1>
+
+        {% if orders %}
+
+        <div class="table-wrapper">
+
+            <table class="table table-bordered table-hover">
+
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for order in orders %}
+
+                    <tr>
+
+                        <td>
+                            {{ order['Id'] }}
+                        </td>
+
+                        <td>
+                            {{ order['Name'] }}
+                        </td>
+
+                        <td>
+                            ${{ order['Price'] }}
+                        </td>
+
+                        <td>
+                            {{ order['Quantity'] }}
+                        </td>
+
+                        <td class="total">
+                            ${{ order['Total'] }}
+                        </td>
+
+                        <td>
+                            {{ order['Date'] }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        {% else %}
+
+        <div class="no-orders">
+
+            <h4>☕ No Orders Found</h4>
+
+            <p>No customer orders have been placed yet.</p>
+
+        </div>
+
+        {% endif %}
+
+        <a href="/Dashboard" class="back-btn">
+            ← Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
